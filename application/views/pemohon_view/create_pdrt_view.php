@@ -42,19 +42,7 @@
 			<div class="card-content">
 				<form action="<?php echo base_url('pdrtcrud/create'); ?>" method="post">
 						<?php validation_errors(); ?>
-						<?php form_open(base_url('pdrtcrud/create')); ?>
-						  <div class="row">
-								<div class="form-group">
-								  <div class="col-md-4">
-									 <labels>No KTP</labels>
-								  </div>
-								  <div class="col-md-8">
-									 <input type="number" class="form-control" name="no_ktp" size="16" maxlength="4" value="<?php echo set_value('no_ktp'); ?>" placeholder="Contoh : 1279371602936183 - Max Digit 16"/>
-									 <?php echo form_error('no_ktp'); ?>
-								  </div>
-								</div>
-						  </div><br>
-					
+						<?php form_open(base_url('pdrtcrud/create')); ?>	
 					<div class="row">
 								<div class="form-group">
 								  <div class="col-md-4">

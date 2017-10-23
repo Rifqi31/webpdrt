@@ -50,16 +50,15 @@ class Kendalicrud extends CI_Controller {
 
 //---CRUD METHOD---//
 
-  public function edit_data($no_ktp) {
+  public function edit_data($id_kendali) {
 
-    $where = array('no_ktp' => $no_ktp);
+    $where = array('id_kendali' => $id_kendali);
     $data['rows']= $this->model->dapat_data_kendali($where,'buku_kendali_pdrt');
     $this->load->view('kendali_view/update_kendali_pdrt_view',$data);
   }
  
   public function update() {
 
-    $no_ktp = $this->input->post('no_ktp');
     $nama_pemohon = $this->input->post('nama_pemohon');
     $kecamatan = $this->input->post('kecamatan');
     $desa_kel = $this->input->post('desa_kel');
@@ -99,7 +98,6 @@ class Kendalicrud extends CI_Controller {
     $tanggal = $date_from->format('Y-m-d');
 
     $datakendali = array(
-        'no_ktp' => $no_ktp,
         'nama_pemohon' => $nama_pemohon,
         'kecamatan' => $kecamatan,
         'desa_kel' => $desa_kel,
@@ -128,7 +126,7 @@ class Kendalicrud extends CI_Controller {
     );
 
      $where = array(
-        'no_ktp' => $no_ktp
+        'nama_pemohon' => $nama_pemohon
     );
 
      $this->model->update_data_kendali($where,$datakendali,'buku_kendali_pdrt');
@@ -143,18 +141,18 @@ class Kendalicrud extends CI_Controller {
   }
 
 
-  public function detail_data($no_ktp) {
-    $where = array('no_ktp' => $no_ktp);
+  public function detail_data($id_kendali) {
+    $where = array('id_kendali' => $id_kendali);
     $data['rows']= $this->model->dapat_data_kendali($where,'buku_kendali_pdrt');
     $this->load->view('kendali_view/detail_data',$data);
   }
 
 
 
-  public function delete($id){
-    $this->model->no_ktp = $id;
+  public function delete($id_kendali){
+    $this->model->id_kendali = $id_kendali;
     $sql = $this->model->delete();
-    redirect('Kendali_crud');
+    redirect('Kendalicrud');
   }
 
 

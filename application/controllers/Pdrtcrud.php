@@ -65,15 +65,6 @@ class Pdrtcrud extends CI_Controller {
     // form validation
     $config_validate = array(
         array(
-          'field' => 'no_ktp',
-          'label' => 'No KTP',
-          'rules' => 'required|min_length[16]|max_length[16]',
-          'errors' => array(
-                      'required' => 'Anda harus mengisi nomer ktp'
-            ),
-        ),
-
-        array(
           'field' => 'nama_pemohon',
           'label' => 'Nama Pemohon',
           'rules' => 'required',
@@ -143,7 +134,6 @@ class Pdrtcrud extends CI_Controller {
         $date_from = DateTime::createFromFormat('d/m/Y', $this->input->post('tanggal'));
         $new_date = $date_from->format('Y-m-d');
         $datapermohonan = array(
-                        'no_ktp' => $this->input->post('no_ktp'),
                         'nama_pemohon' => $this->input->post('nama_pemohon'),
                         'kecamatan' => $this->input->post('kecamatan'),
                         'desa_kel' => $this->input->post('desa_kel'),
@@ -156,7 +146,6 @@ class Pdrtcrud extends CI_Controller {
                         'keterangan' => $this->input->post('keterangan')
                       );
         $datakendali = array(
-                      'no_ktp' => $this->input->post('no_ktp'),
                       'nama_pemohon' => $this->input->post('nama_pemohon'),
                       'kecamatan' => $this->input->post('kecamatan'),
                       'desa_kel' => $this->input->post('desa_kel'),
@@ -253,9 +242,9 @@ class Pdrtcrud extends CI_Controller {
 
 
   // load view and cacth the id as primary key
-  public function edit_data($no_ktp) {
+  public function edit_data($id_permo) {
 
-    $where = array('no_ktp' => $no_ktp);
+    $where = array('id_permo' => $id_permo);
     $data['rows']= $this->model->dapat_data_permo($where,'permo_pdrt');
     $this->load->view('pemohon_view/update_pdrt_view',$data);
   }
@@ -266,7 +255,6 @@ class Pdrtcrud extends CI_Controller {
     $date_from = DateTime::createFromFormat('d/m/Y', $this->input->post('tanggal'));
     $new_date = $date_from->format('Y-m-d');
 
-    $no_ktp = $this->input->post('no_ktp');
     $nama_pemohon = $this->input->post('nama_pemohon');
     $kecamatan = $this->input->post('kecamatan');
     $desa_kel = $this->input->post('desa_kel');
@@ -279,7 +267,6 @@ class Pdrtcrud extends CI_Controller {
     $keterangan = $this->input->post('keterangan');
 
     $datapermo = array(
-        'no_ktp' => $no_ktp,
         'nama_pemohon' => $nama_pemohon,
         'kecamatan' => $kecamatan,
         'desa_kel' => $desa_kel,
@@ -293,7 +280,6 @@ class Pdrtcrud extends CI_Controller {
     );
 
   $datakendali = array(
-        'no_ktp' => $no_ktp,
         'nama_pemohon' => $nama_pemohon,
         'kecamatan' => $kecamatan,
         'desa_kel' => $desa_kel,
@@ -303,7 +289,7 @@ class Pdrtcrud extends CI_Controller {
     );
 
     $where = array(
-        'no_ktp' => $no_ktp
+        'nama_pemohon' => $nama_pemohon
     );
 
     $this->model->update_data_permo($where,$datapermo,'permo_pdrt');
@@ -316,8 +302,8 @@ class Pdrtcrud extends CI_Controller {
 
   // delete function
   // delete data when catch the id as primary key
-  public function delete($id) {
-    $this->model->no_ktp = $id;
+  public function delete($id_permo) {
+    $this->model->id_permo = $id_permo;
     $sql = $this->model->delete();
     redirect(base_url());
   }

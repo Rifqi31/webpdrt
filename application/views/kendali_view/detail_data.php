@@ -10,18 +10,6 @@
                 <div class="row">
                   <div class="form-group">
                       <div class="col-sm-4">
-                         <labels>No KTP</labels>
-                      </div>
-                      <div class="col-md-8">
-                        <input type="number" class="form-control" name="no_ktp" size="16" readonly value="<?php echo $row->no_ktp;?>" />
-                        <p></p>
-                      </div>
-                  </div>
-                </div><br>
-
-                <div class="row">
-                  <div class="form-group">
-                      <div class="col-sm-4">
                          <labels>Nama Pemohon</labels>
                       </div>
                       <div class="col-md-8">

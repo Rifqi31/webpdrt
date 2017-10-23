@@ -142,5 +142,6 @@ $autoload['language'] = array();
 */
 $autoload['model'] = array(
                             'Pdrt_model',
-                            'Kendali_pdrt_model'
+                            'Kendali_pdrt_model',
+                            'Login_model'
                           );

@@ -1,7 +1,7 @@
 <?php
 class Pdrt_model extends CI_Model {
   // permo_pdrt
-  public $no_ktp, $nama_pemohon, $desa_kel;
+  public $id_permo, $nama_pemohon, $desa_kel;
   public $kecamatan, $fungsi_bangunan, $jenis_kegiatan;
   public $luas_tanah, $no_register, $tanggal;
   public $ilok_ppt,$keterangan;
@@ -54,7 +54,7 @@ class Pdrt_model extends CI_Model {
 
 
   public function delete(){
-    $this->db->where('no_ktp',$this->no_ktp);
+    $this->db->where('id_permo',$this->id_permo);
     $this->db->delete($this->table_permo);
   }
 

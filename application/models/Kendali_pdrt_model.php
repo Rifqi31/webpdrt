@@ -1,7 +1,7 @@
 <?php
 class Kendali_pdrt_model extends CI_Model {
   
-  public $no_ktp, $nama_pemohon, $kecamatan, $desa_kel, $jenis_kegiatan;
+  public $id_kendali, $nama_pemohon, $kecamatan, $desa_kel, $jenis_kegiatan;
   public $fungsi_bangunan, $luas_tanah, $ilok_ppt;
   public $no_register, $keterangan_register;
   public $peninjauan_lapangan, $keterangan_lapangan;
@@ -47,8 +47,8 @@ class Kendali_pdrt_model extends CI_Model {
 
 
   public function delete(){
-    $this->db->where('no_ktp',$this->no_ktp);
-    $this->db->delete('buku_kendali_pdrt');
+    $this->db->where('id_kendali',$this->id_kendali);
+    $this->db->delete($this->table_kendali);
   }
 
   // search function --kendali
