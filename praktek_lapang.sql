@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Oct 20, 2017 at 12:51 PM
+-- Generation Time: Oct 23, 2017 at 11:50 AM
 -- Server version: 5.7.18
 -- PHP Version: 7.1.9
 
@@ -54,7 +54,7 @@ INSERT INTO `admin` (`id`, `username`, `password`, `level`) VALUES
 
 DROP TABLE IF EXISTS `buku_kendali_pdrt`;
 CREATE TABLE IF NOT EXISTS `buku_kendali_pdrt` (
-  `no_ktp` bigint(16) NOT NULL,
+  `id_kendali` int(11) NOT NULL AUTO_INCREMENT,
   `nama_pemohon` varchar(50) NOT NULL,
   `kecamatan` varchar(30) NOT NULL,
   `desa_kel` varchar(30) NOT NULL,
@@ -79,19 +79,9 @@ CREATE TABLE IF NOT EXISTS `buku_kendali_pdrt` (
   `paraf_sekre` varchar(100) DEFAULT NULL,
   `paraf_dinas` varchar(100) DEFAULT NULL,
   `no_pdrt` varchar(25) DEFAULT NULL,
-  `tanggal` date DEFAULT NULL,
-  PRIMARY KEY (`no_ktp`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `buku_kendali_pdrt`
---
-
-INSERT INTO `buku_kendali_pdrt` (`no_ktp`, `nama_pemohon`, `kecamatan`, `desa_kel`, `jenis_kegiatan`, `no_register`, `keterangan_register`, `peninjauan_lapangan`, `keterangan_lapangan`, `perhitungan`, `keterangan_perhitungan`, `draft_ketik`, `keterangan_ketik_pdrt`, `draft_periksa`, `keterangan_periksa_pdrt`, `denda_ketik`, `keterangan_ketik_denda`, `denda_periksa`, `keterangan_periksa_denda`, `paraf_kasie`, `paraf_kabid`, `keterangan_kabid_kasie`, `paraf_sekre`, `paraf_dinas`, `no_pdrt`, `tanggal`) VALUES
-(1098162781637165, 'Fristian T.E.P Kalalembang', 'Ciampea', 'Cibadak', 'Toko', '644/193/KP/2017', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2017-08-24'),
-(1423651267341263, 'Muztahidin Alayubi AP.', 'Kemang', 'Parakan Jaya', 'Sarana Pendidikan', '642/51/KP/2017', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2017-10-10'),
-(1512341231423412, 'Alfonso Taluhula', 'Gunung Putri', 'Cikeas Udik', 'Data Center Polri', '640.6/50/KP/2017', '', '20/10/2017', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '2017-10-20'),
-(9268471672938000, 'Drs.Memet Farajnuri,MM', 'Tajur halang', 'Tajur Halang', 'Sarana Pendidikan', '642/52/KP/2017', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2017-09-06');
+  `tanggal` date NOT NULL,
+  PRIMARY KEY (`id_kendali`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -101,29 +91,26 @@ INSERT INTO `buku_kendali_pdrt` (`no_ktp`, `nama_pemohon`, `kecamatan`, `desa_ke
 
 DROP TABLE IF EXISTS `permo_pdrt`;
 CREATE TABLE IF NOT EXISTS `permo_pdrt` (
-  `no_ktp` bigint(16) NOT NULL,
+  `id_permo` int(11) NOT NULL AUTO_INCREMENT,
   `nama_pemohon` varchar(50) NOT NULL,
   `kecamatan` varchar(30) NOT NULL,
   `desa_kel` varchar(30) NOT NULL,
   `fungsi_bangunan` varchar(30) NOT NULL,
   `jenis_kegiatan` varchar(30) NOT NULL,
-  `luas_tanah` double(10,3) NOT NULL,
+  `luas_tanah` decimal(10,3) NOT NULL,
   `no_register` varchar(50) NOT NULL,
   `tanggal` date NOT NULL,
   `ilok_ppt` varchar(50) DEFAULT NULL,
   `keterangan` text,
-  PRIMARY KEY (`no_ktp`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`id_permo`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `permo_pdrt`
 --
 
-INSERT INTO `permo_pdrt` (`no_ktp`, `nama_pemohon`, `kecamatan`, `desa_kel`, `fungsi_bangunan`, `jenis_kegiatan`, `luas_tanah`, `no_register`, `tanggal`, `ilok_ppt`, `keterangan`) VALUES
-(1098162781637165, 'Fristian T.E.P Kalalembang', 'Ciampea', 'Cibadak', 'Usaha', 'Toko', 3.000, '644/193/KP/2017', '2017-08-24', 'IPPT:591.2/002/00171/DPMPTSP/2017', ''),
-(1423651267341263, 'Muztahidin Alayubi AP.', 'Kemang', 'Parakan Jaya', 'Sosial Budaya', 'Sarana Pendidikan', 2.000, '642/51/KP/2017', '2017-10-10', 'IPPT:591.2/002/00193/DPMPTSP/2017', ''),
-(1512341231423412, 'Alfonso Taluhula', 'Gunung Putri', 'Cikeas Udik', 'Sosial Budaya', 'Data Center Polri', 530.000, '640.6/50/KP/2017', '2017-10-20', '', ''),
-(9268471672938000, 'Drs.Memet Farajnuri,MM', 'Tajur halang', 'Tajur Halang', 'Sosial Budaya', 'Sarana Pendidikan', 2000.000, '642/52/KP/2017', '2017-09-06', 'IPPT:591.2/002/00517/DPMPTSP/2017', 'Harus melengkapi gambar 2 rangkap, gambar situasi yang baru');
+INSERT INTO `permo_pdrt` (`id_permo`, `nama_pemohon`, `kecamatan`, `desa_kel`, `fungsi_bangunan`, `jenis_kegiatan`, `luas_tanah`, `no_register`, `tanggal`, `ilok_ppt`, `keterangan`) VALUES
+(4, 'Alfonso Taluhula', 'Gunung Putri', 'Cikeas Udik', 'Campuran', 'Data Center Polri', '530.000', '640.6/50/KP/2017', '2017-10-23', '', '');
 
 --
 -- Constraints for dumped tables
@@ -133,7 +120,7 @@ INSERT INTO `permo_pdrt` (`no_ktp`, `nama_pemohon`, `kecamatan`, `desa_kel`, `fu
 -- Constraints for table `buku_kendali_pdrt`
 --
 ALTER TABLE `buku_kendali_pdrt`
-  ADD CONSTRAINT `buku_kendali_pdrt_ibfk_1` FOREIGN KEY (`no_ktp`) REFERENCES `permo_pdrt` (`no_ktp`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `buku_kendali_pdrt_ibfk_1` FOREIGN KEY (`id_kendali`) REFERENCES `permo_pdrt` (`id_permo`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
