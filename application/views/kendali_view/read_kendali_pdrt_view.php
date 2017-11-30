@@ -98,11 +98,11 @@
                       <td><?php echo $row->perhitungan; ?></td>
                       <td><?php echo dateFormat('d/m/Y',$row->tanggal); ?></td>
                       <td>
-                        <a class="btn btn-primary" href="<?php echo base_url();?>kendalicrud/edit_data/<?php echo $row->id_kendali; ?>" data-toggle="tooltip" data-placement="top" title="Ubah Data"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                        <a class="btn btn-primary" href="<?php echo base_url();?>kendalicrud/edit_data/<?php echo $row->id; ?>" data-toggle="tooltip" data-placement="top" title="Ubah Data"><i class="fa fa-pencil" aria-hidden="true"></i></a>
 
-                        <a class="btn btn-danger" href="<?php echo base_url();?>kendalicrud/delete/<?php echo $row->id_kendali; ?>" data-toggle="tooltip" data-placement="top" title="Hapus Data"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                        <a class="btn btn-danger" href="<?php echo base_url();?>kendalicrud/delete/<?php echo $row->id; ?>" data-toggle="tooltip" data-placement="top" title="Hapus Data"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
 
-                        <button class="btn btn-success" href="<?php echo base_url();?>kendalicrud/detail_data/<?php echo $row->id_kendali; ?>" data-toggle="modal" target="#myModal" data-target="#myModal" data-placement="top" title="Detail Data"><i class="fa fa-info" aria-hidden="true"></i></button>
+                        <button class="btn btn-success" href="<?php echo base_url();?>kendalicrud/detail_data/<?php echo $row->id; ?>" data-toggle="modal" target="#myModal" data-target="#myModal" data-placement="top" title="Detail Data"><i class="fa fa-info" aria-hidden="true"></i></button>
 
                       </td>
                     </tr>

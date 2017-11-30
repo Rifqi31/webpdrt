@@ -162,7 +162,7 @@
 											 <td><?php echo $row->denda_ketik; ?></td>
 											 <td><?php echo dateFormat('d/m/Y',$row->tanggal); ?></td>
 											 <td>
-											 	 <button class="btn btn-success" href="<?php echo base_url();?>kendalicrud/detail_data/<?php echo $row->id_kendali; ?>" data-toggle="modal" target="#myModal" data-target="#myModal" data-placement="top" title="Detail Data"><i class="fa fa-info" aria-hidden="true"></i></button>
+											 	 <button class="btn btn-success" href="<?php echo base_url();?>kendalicrud/detail_data/<?php echo $row->id; ?>" data-toggle="modal" target="#myModal" data-target="#myModal" data-placement="top" title="Detail Data"><i class="fa fa-info" aria-hidden="true"></i></button>
 											 </td>
 										</tr>
 										  <?php

@@ -48,6 +48,7 @@
                          <labels>Nama Pemohon</labels>
                       </div>
                       <div class="col-md-8">
+                        <input type="text" class="form-control" name="id" size="50" maxlength="30" readonly value="<?php echo $row->id; ?>" />
                         <input type="text" class="form-control" name="nama_pemohon" size="50" maxlength="30" readonly value="<?php echo $row->nama_pemohon; ?>" />
                       </div>
                   </div>

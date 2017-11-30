@@ -21,7 +21,7 @@ class Pdrtcrud extends CI_Controller {
     $jumlah_data = $this->model->jumlah_data();
     $config['base_url'] = base_url().'pdrtcrud/index/';
     $config['total_rows'] = $jumlah_data;
-    $config['per_page'] = 20;
+    $config['per_page'] = 5;
 
     //config for bootstrap pagination class integration
     $config['full_tag_open'] = '<ul class="pagination">';
@@ -125,7 +125,7 @@ class Pdrtcrud extends CI_Controller {
           'errors' => array(
                       'required' => 'And harus mengisi tanggal'
             ),
-        )
+          )
     );
 
     $this->form_validation->set_rules($config_validate);
@@ -175,7 +175,7 @@ class Pdrtcrud extends CI_Controller {
     $jumlah_data_permo = $this->model->jumlah_data_permo();
     $config['base_url'] = base_url().'pdrtcrud/read_datapermo/';
     $config['total_rows'] = $jumlah_data_permo;
-    $config['per_page'] = 20;
+    $config['per_page'] = 10;
 
     //config for bootstrap pagination class integration
     $config['full_tag_open'] = '<ul class="pagination">';
@@ -209,7 +209,7 @@ class Pdrtcrud extends CI_Controller {
 	   $jumlah_data_kendali = $this->model->jumlah_data_kendali();
 	   $config['base_url'] = base_url().'pdrtcrud/read_datakendali/';
      $config['total_rows'] = $jumlah_data_kendali;
-     $config['per_page'] = 20;
+     $config['per_page'] = 10;
 
 		  //config for bootstrap pagination class integration
 		 $config['full_tag_open'] = '<ul class="pagination">';
@@ -242,9 +242,9 @@ class Pdrtcrud extends CI_Controller {
 
 
   // load view and cacth the id as primary key
-  public function edit_data($id_permo) {
+  public function edit_data($id) {
 
-    $where = array('id_permo' => $id_permo);
+    $where = array('id' => $id);
     $data['rows']= $this->model->dapat_data_permo($where,'permo_pdrt');
     $this->load->view('pemohon_view/update_pdrt_view',$data);
   }
@@ -255,6 +255,7 @@ class Pdrtcrud extends CI_Controller {
     $date_from = DateTime::createFromFormat('d/m/Y', $this->input->post('tanggal'));
     $new_date = $date_from->format('Y-m-d');
 
+    $id = $this->input->post('id');
     $nama_pemohon = $this->input->post('nama_pemohon');
     $kecamatan = $this->input->post('kecamatan');
     $desa_kel = $this->input->post('desa_kel');
@@ -289,7 +290,7 @@ class Pdrtcrud extends CI_Controller {
     );
 
     $where = array(
-        'nama_pemohon' => $nama_pemohon
+        'id' => $id
     );
 
     $this->model->update_data_permo($where,$datapermo,'permo_pdrt');
@@ -302,8 +303,8 @@ class Pdrtcrud extends CI_Controller {
 
   // delete function
   // delete data when catch the id as primary key
-  public function delete($id_permo) {
-    $this->model->id_permo = $id_permo;
+  public function delete($id) {
+    $this->model->id = $id;
     $sql = $this->model->delete();
     redirect(base_url());
   }

@@ -20,7 +20,7 @@ class Kendalicrud extends CI_Controller {
     $jumlah_data = $this->model->jumlah_data();
     $config['base_url'] = base_url().'kendalicrud/index/';
     $config['total_rows'] = $jumlah_data;
-    $config['per_page'] = 20;
+    $config['per_page'] = 10;
 
       //config for bootstrap pagination class integration
     $config['full_tag_open'] = '<ul class="pagination">';
@@ -50,15 +50,16 @@ class Kendalicrud extends CI_Controller {
 
 //---CRUD METHOD---//
 
-  public function edit_data($id_kendali) {
+  public function edit_data($id) {
 
-    $where = array('id_kendali' => $id_kendali);
+    $where = array('id' => $id);
     $data['rows']= $this->model->dapat_data_kendali($where,'buku_kendali_pdrt');
     $this->load->view('kendali_view/update_kendali_pdrt_view',$data);
   }
  
   public function update() {
 
+    $id = $this->input->post('id');
     $nama_pemohon = $this->input->post('nama_pemohon');
     $kecamatan = $this->input->post('kecamatan');
     $desa_kel = $this->input->post('desa_kel');
@@ -126,7 +127,7 @@ class Kendalicrud extends CI_Controller {
     );
 
      $where = array(
-        'nama_pemohon' => $nama_pemohon
+        'id' => $id
     );
 
      $this->model->update_data_kendali($where,$datakendali,'buku_kendali_pdrt');
@@ -141,16 +142,16 @@ class Kendalicrud extends CI_Controller {
   }
 
 
-  public function detail_data($id_kendali) {
-    $where = array('id_kendali' => $id_kendali);
+  public function detail_data($id) {
+    $where = array('id' => $id);
     $data['rows']= $this->model->dapat_data_kendali($where,'buku_kendali_pdrt');
     $this->load->view('kendali_view/detail_data',$data);
   }
 
 
 
-  public function delete($id_kendali){
-    $this->model->id_kendali = $id_kendali;
+  public function delete($id){
+    $this->model->id = $id;
     $sql = $this->model->delete();
     redirect('Kendalicrud');
   }
@@ -163,7 +164,7 @@ class Kendalicrud extends CI_Controller {
     $jumlah_data_permo = $this->model->jumlah_data_permo();
     $config['base_url'] = base_url().'kendalicrud/read_datapermo/';
     $config['total_rows'] = $jumlah_data_permo;
-    $config['per_page'] = 20;
+    $config['per_page'] = 10;
 
     //config for bootstrap pagination class integration
     $config['full_tag_open'] = '<ul class="pagination">';
@@ -197,7 +198,7 @@ class Kendalicrud extends CI_Controller {
      $jumlah_data_kendali = $this->model->jumlah_data_kendali();
      $config['base_url'] = base_url().'kendalicrud/read_datakendali/';
      $config['total_rows'] = $jumlah_data_kendali;
-     $config['per_page'] = 20;
+     $config['per_page'] = 10;
 
       //config for bootstrap pagination class integration
      $config['full_tag_open'] = '<ul class="pagination">';

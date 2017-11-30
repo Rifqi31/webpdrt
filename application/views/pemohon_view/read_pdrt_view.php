@@ -82,6 +82,7 @@
 											 <th class="column-with-ordering" data-order-by="tanggal">Tanggal</th>
 											 <th class="column-with-ordering" data-order-by="ilok_ppt">ILOK/IPPT</th>
 											 <th class="column-with-ordering" data-order-by="keterangan">Keterangan</th>
+											 <th class="column-with-ordering" data-order-by="nomer_kk">Nomer KK</th>
 										</tr>
 								  </thead>
 								  <tbody class="table-hover">
@@ -104,9 +105,9 @@
 											 <td><?php echo $row->ilok_ppt; ?></td>
 											 <td><?php echo $row->keterangan; ?></td>
 											<td>
-												<a type="button" class="btn btn-primary" href="<?php echo base_url();?>pdrtcrud/edit_data/<?php echo $row->id_permo; ?>" data-toggle="tooltip" data-placement="top" title="Ubah Data"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+												<a type="button" class="btn btn-primary" href="<?php echo base_url();?>pdrtcrud/edit_data/<?php echo $row->id; ?>" data-toggle="tooltip" data-placement="top" title="Ubah Data"><i class="fa fa-pencil" aria-hidden="true"></i></a>
 
-												<a class="btn btn-danger" href="<?php echo base_url();?>pdrtcrud/delete/<?php echo $row->id_permo; ?>" data-toggle="tooltip" data-placement="top" title="Hapus Data"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+												<a class="btn btn-danger" href="<?php echo base_url();?>pdrtcrud/delete/<?php echo $row->id; ?>" data-toggle="tooltip" data-placement="top" title="Hapus Data"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
 											</td>
 										</tr>
 										  <?php

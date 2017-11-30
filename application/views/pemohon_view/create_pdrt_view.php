@@ -49,7 +49,7 @@
 									 <labels>Nama Pemohon</labels>
 								  </div>
 								  <div class="col-md-8">
-									 <input type="text" class="form-control" name="nama_pemohon" size="50" maxlength="30" value="<?php echo set_value('nama_pemohon'); ?>" placeholder="Masukkan  Nama Lengkap"/>
+									 <input type="text" class="form-control" name="nama_pemohon" size="50" maxlength="100" value="<?php echo set_value('nama_pemohon'); ?>" placeholder="Masukkan  Nama Lengkap"/>
 									 <?php echo form_error('nama_pemohon'); ?>
 								  </div>
 								</div>
@@ -216,6 +216,7 @@
 								</div>
 								<div class="col-md-8">
 								  <textarea class="form-control" rows="5" name="keterangan" placeholder="Keterangan Untuk Pemohon"></textarea>
+								</div>
 								</div>
 							 </div>
 							</div><br>
