@@ -82,7 +82,6 @@
 											 <th class="column-with-ordering" data-order-by="tanggal">Tanggal</th>
 											 <th class="column-with-ordering" data-order-by="ilok_ppt">ILOK/IPPT</th>
 											 <th class="column-with-ordering" data-order-by="keterangan">Keterangan</th>
-											 <th class="column-with-ordering" data-order-by="nomer_kk">Nomer KK</th>
 										</tr>
 								  </thead>
 								  <tbody class="table-hover">
