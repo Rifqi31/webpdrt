@@ -156,6 +156,7 @@ class Pdrtcrud extends CI_Controller {
 
         $this->model->insert_permo($datapermohonan);
         $this->model->insert_kendali($datakendali);
+        $this->session->set_flashdata('message', 'anda berhasil menginput data');
         redirect(base_url());
     }else{
       $this->load->view('pemohon_view/create_pdrt_view');

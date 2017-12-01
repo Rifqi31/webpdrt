@@ -59,6 +59,7 @@
         </div><br>
 
         <?php $this->load->view('core_view/filter'); ?>
+		<?php echo $this->session->flashdata('message');?>
 
         <div class="container-fluid">
 					<div class="card">

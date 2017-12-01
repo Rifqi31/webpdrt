@@ -148,4 +148,9 @@ class Pdrt_model extends CI_Model {
 	  return $this->db->get($this->table_kendali)->num_rows();
   }
 
+
+  //public function check_duplicate_name(){
+
+  //}
+
 }
