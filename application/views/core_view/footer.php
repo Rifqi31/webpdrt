@@ -17,6 +17,40 @@
    <!-- form validation js/Jquery PLugin -->
    <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.js');?>"></script>
 
+   <!-- notification -->
+   <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.jgrowl.js');?>"></script>
+   <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.jgrowl.min.js');?>"></script>
+
+    <?php if ($this->session->flashdata('insert_notifikasi') != ''){ ?>
+        <script type="text/javascript">
+        <!--
+        $(document).ready(function() {	
+            $.jGrowl("<?php echo $this->session->flashdata('insert_notifikasi') ?>");	
+        });
+        //-->				
+        </script>
+    <?php } ?>
+
+    <?php if ($this->session->flashdata('update_notifikasi') != ''){ ?>
+        <script type="text/javascript">
+        <!--
+        $(document).ready(function() {	
+            $.jGrowl("<?php echo $this->session->flashdata('update_notifikasi') ?>");	
+        });
+        //-->				
+        </script>
+    <?php } ?>
+
+    <?php if ($this->session->flashdata('delete_notifikasi') != ''){ ?>
+        <script type="text/javascript">
+        <!--
+        $(document).ready(function() {	
+            $.jGrowl("<?php echo $this->session->flashdata('delete_notifikasi') ?>");	
+        });
+        //-->				
+        </script>
+    <?php } ?>
+
    <script type="text/javascript">
      $(document).ready(function(){
         $('#form_update_permo').validate({

@@ -23,6 +23,10 @@
       <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/bootstrap-datetimepicker.min.css'); ?>">
 
 		<!-- Third Party CSS -->
-		<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/custom.css');;?>">
-		<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/roboto.css');;?>">
+		<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/custom.css');?>">
+		<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/roboto.css');?>">
+
+		<!-- Notification -->
+		<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/jquery.jgrowl.css');?>">
+		<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/jquery.jgrowl.min.css');?>">
 </head>

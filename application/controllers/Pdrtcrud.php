@@ -156,7 +156,7 @@ class Pdrtcrud extends CI_Controller {
 
         $this->model->insert_permo($datapermohonan);
         $this->model->insert_kendali($datakendali);
-        $this->session->set_flashdata('message', 'anda berhasil menginput data');
+        $this->session->set_flashdata('insert_notification', 'Data telah disimpan ke Database');
         redirect(base_url());
     }else{
       $this->load->view('pemohon_view/create_pdrt_view');
@@ -296,6 +296,7 @@ class Pdrtcrud extends CI_Controller {
 
     $this->model->update_data_permo($where,$datapermo,'permo_pdrt');
     $this->model->update_data_kendali($where,$datakendali,'buku_kendali_pdrt');
+    $this->session->set_flashdata('update_notifikasi', 'Data telah diupdate ke Database');
     redirect(base_url());
 
   }
@@ -307,6 +308,7 @@ class Pdrtcrud extends CI_Controller {
   public function delete($id) {
     $this->model->id = $id;
     $sql = $this->model->delete();
+    $this->session->set_flashdata('delete_notifikasi', 'Data telah dihapus dari Database');
     redirect(base_url());
   }
 
