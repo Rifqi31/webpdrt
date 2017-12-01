@@ -18,14 +18,14 @@
    <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.validate.js');?>"></script>
 
    <!-- notification -->
-   <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.jgrowl.js');?>"></script>
-   <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.jgrowl.min.js');?>"></script>
+   <script type="text/javascript" src="<?php echo base_url('assets/js/notify.js');?>"></script>
+   <script type="text/javascript" src="<?php echo base_url('assets/js/notify.min.js');?>"></script>
 
     <?php if ($this->session->flashdata('insert_notifikasi') != ''){ ?>
         <script type="text/javascript">
         <!--
         $(document).ready(function() {	
-            $.jGrowl("<?php echo $this->session->flashdata('insert_notifikasi') ?>");	
+            $.notify("<?php echo $this->session->flashdata('insert_notifikasi') ?>");	
         });
         //-->				
         </script>
@@ -35,7 +35,7 @@
         <script type="text/javascript">
         <!--
         $(document).ready(function() {	
-            $.jGrowl("<?php echo $this->session->flashdata('update_notifikasi') ?>");	
+            $.notify("<?php echo $this->session->flashdata('update_notifikasi') ?>");	
         });
         //-->				
         </script>
@@ -45,7 +45,7 @@
         <script type="text/javascript">
         <!--
         $(document).ready(function() {	
-            $.jGrowl("<?php echo $this->session->flashdata('delete_notifikasi') ?>");	
+            $.notify("<?php echo $this->session->flashdata('delete_notifikasi') ?>");	
         });
         //-->				
         </script>
