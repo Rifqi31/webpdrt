@@ -2,10 +2,10 @@
 -- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3306
--- Generation Time: Oct 23, 2017 at 11:50 AM
--- Server version: 5.7.18
--- PHP Version: 7.1.9
+-- Host: 127.0.0.1
+-- Generation Time: Dec 02, 2017 at 04:15 AM
+-- Server version: 10.1.28-MariaDB
+-- PHP Version: 7.1.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -28,14 +28,12 @@ SET time_zone = "+00:00";
 -- Table structure for table `admin`
 --
 
-DROP TABLE IF EXISTS `admin`;
-CREATE TABLE IF NOT EXISTS `admin` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `admin` (
+  `id` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
-  `level` enum('admin_permo','admin_kendali','admin_read_data') NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+  `level` enum('admin_permo','admin_kendali','admin_read_data') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `admin`
@@ -52,9 +50,8 @@ INSERT INTO `admin` (`id`, `username`, `password`, `level`) VALUES
 -- Table structure for table `buku_kendali_pdrt`
 --
 
-DROP TABLE IF EXISTS `buku_kendali_pdrt`;
-CREATE TABLE IF NOT EXISTS `buku_kendali_pdrt` (
-  `id_kendali` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `buku_kendali_pdrt` (
+  `id` int(11) NOT NULL,
   `nama_pemohon` varchar(50) NOT NULL,
   `kecamatan` varchar(30) NOT NULL,
   `desa_kel` varchar(30) NOT NULL,
@@ -79,9 +76,17 @@ CREATE TABLE IF NOT EXISTS `buku_kendali_pdrt` (
   `paraf_sekre` varchar(100) DEFAULT NULL,
   `paraf_dinas` varchar(100) DEFAULT NULL,
   `no_pdrt` varchar(25) DEFAULT NULL,
-  `tanggal` date NOT NULL,
-  PRIMARY KEY (`id_kendali`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+  `tanggal` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `buku_kendali_pdrt`
+--
+
+INSERT INTO `buku_kendali_pdrt` (`id`, `nama_pemohon`, `kecamatan`, `desa_kel`, `jenis_kegiatan`, `no_register`, `keterangan_register`, `peninjauan_lapangan`, `keterangan_lapangan`, `perhitungan`, `keterangan_perhitungan`, `draft_ketik`, `keterangan_ketik_pdrt`, `draft_periksa`, `keterangan_periksa_pdrt`, `denda_ketik`, `keterangan_ketik_denda`, `denda_periksa`, `keterangan_periksa_denda`, `paraf_kasie`, `paraf_kabid`, `keterangan_kabid_kasie`, `paraf_sekre`, `paraf_dinas`, `no_pdrt`, `tanggal`) VALUES
+(5, 'Maman Suparman', 'Babakan Madang', 'Babakan Madang', 'Hotel', '654.5/KPP/2017', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2017-12-01'),
+(6, 'Andrian Harid', 'Bojonggede', 'Bojong Baru', 'Ruko', '654.5/KPP/2017', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2017-12-01'),
+(7, 'Maman Suparman', 'Caringin', 'Ciherang Pondok', 'Masjid', '654.5/KPP/2017', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2017-12-02');
 
 -- --------------------------------------------------------
 
@@ -89,9 +94,8 @@ CREATE TABLE IF NOT EXISTS `buku_kendali_pdrt` (
 -- Table structure for table `permo_pdrt`
 --
 
-DROP TABLE IF EXISTS `permo_pdrt`;
-CREATE TABLE IF NOT EXISTS `permo_pdrt` (
-  `id_permo` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `permo_pdrt` (
+  `id` int(11) NOT NULL,
   `nama_pemohon` varchar(50) NOT NULL,
   `kecamatan` varchar(30) NOT NULL,
   `desa_kel` varchar(30) NOT NULL,
@@ -101,16 +105,62 @@ CREATE TABLE IF NOT EXISTS `permo_pdrt` (
   `no_register` varchar(50) NOT NULL,
   `tanggal` date NOT NULL,
   `ilok_ppt` varchar(50) DEFAULT NULL,
-  `keterangan` text,
-  PRIMARY KEY (`id_permo`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+  `keterangan` text
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `permo_pdrt`
 --
 
-INSERT INTO `permo_pdrt` (`id_permo`, `nama_pemohon`, `kecamatan`, `desa_kel`, `fungsi_bangunan`, `jenis_kegiatan`, `luas_tanah`, `no_register`, `tanggal`, `ilok_ppt`, `keterangan`) VALUES
-(4, 'Alfonso Taluhula', 'Gunung Putri', 'Cikeas Udik', 'Campuran', 'Data Center Polri', '530.000', '640.6/50/KP/2017', '2017-10-23', '', '');
+INSERT INTO `permo_pdrt` (`id`, `nama_pemohon`, `kecamatan`, `desa_kel`, `fungsi_bangunan`, `jenis_kegiatan`, `luas_tanah`, `no_register`, `tanggal`, `ilok_ppt`, `keterangan`) VALUES
+(5, 'Maman Suparman', 'Babakan Madang', 'Babakan Madang', 'Hunian', 'Hotel', '1112.000', '654.5/KPP/2017', '2017-12-01', '', ''),
+(6, 'Andrian Harid', 'Bojonggede', 'Bojong Baru', 'Campuran', 'Ruko', '1112.000', '654.5/KPP/2017', '2017-12-01', '', ''),
+(7, 'Maman Suparman', 'Caringin', 'Ciherang Pondok', 'Keagmaan', 'Masjid', '1112.000', '654.5/KPP/2017', '2017-12-02', '', '');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `buku_kendali_pdrt`
+--
+ALTER TABLE `buku_kendali_pdrt`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id` (`id`);
+
+--
+-- Indexes for table `permo_pdrt`
+--
+ALTER TABLE `permo_pdrt`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `buku_kendali_pdrt`
+--
+ALTER TABLE `buku_kendali_pdrt`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `permo_pdrt`
+--
+ALTER TABLE `permo_pdrt`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables
@@ -120,7 +170,7 @@ INSERT INTO `permo_pdrt` (`id_permo`, `nama_pemohon`, `kecamatan`, `desa_kel`, `
 -- Constraints for table `buku_kendali_pdrt`
 --
 ALTER TABLE `buku_kendali_pdrt`
-  ADD CONSTRAINT `buku_kendali_pdrt_ibfk_1` FOREIGN KEY (`id_kendali`) REFERENCES `permo_pdrt` (`id_permo`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `buku_kendali_pdrt_ibfk_1` FOREIGN KEY (`id`) REFERENCES `permo_pdrt` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
