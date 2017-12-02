@@ -49,6 +49,12 @@ class Pdrtcrud extends CI_Controller {
     $this->load->view('pemohon_view/read_pdrt_view',$data);
   }
 
+  // check value already exist
+  public function nama_pemohon_exists($key) {
+    $this->model->pemohon_exists($key);
+  }
+
+
   //---CRUD METHOD---//
 
   // insert data
@@ -61,6 +67,111 @@ class Pdrtcrud extends CI_Controller {
 
   // then create function excecution
   public function create() {
+
+    // form validation
+    $config_validate = array(
+        array(
+          'field' => 'nama_pemohon',
+          'label' => 'Nama Pemohon',
+          'rules' => 'required|callback_nama_pemohon_exists',
+          'errors' => array(
+                      'required' => 'Anda harus mengisi nama pemohon,
+                      jika nama sama klik link <a href="force_create">disini</a>'
+            ),
+        ),
+
+        array(
+          'field' => 'kecamatan',
+          'label' => 'Kecamatan',
+          'rules' => 'required'
+        ),
+
+        array(
+          'field' => 'desa_kel',
+          'label' => 'Desa/Kelurahan',
+          'rules' => 'required'
+        ),
+
+        array(
+          'field' => 'fungsi_bangunan',
+          'label' => 'Fungsi Bangunan',
+          'rules' => 'required'
+        ),
+
+        array(
+          'field' => 'jenis_kegiatan',
+          'label' => 'Jenis Kegiatan',
+          'rules' => 'required',
+          'errors' => array(
+                      'required' => 'Anda harus mengisi jenis kegiatan'
+            ),
+        ),
+
+        array(
+          'field' => 'luas_tanah',
+          'label' => 'Luas Tanah',
+          'rules' => 'required',
+          'errors' => array(
+                      'required' => 'Anda harus mengisi luas tanah'
+            ),
+        ),
+
+        array(
+          'field' => 'no_register',
+          'label' => 'No Register',
+          'rules' => 'required',
+          'errors' => array(
+                      'required' => 'Anda harus mengisi nomer register'
+            ),
+        ),
+
+        array(
+          'field' => 'tanggal',
+          'label' => 'Tanggal',
+          'rules' => 'required',
+          'errors' => array(
+                      'required' => 'And harus mengisi tanggal'
+            ),
+          )
+    );
+
+    $this->form_validation->set_rules($config_validate);
+    
+    if ($this->form_validation->run() == TRUE) {
+        $date_from = DateTime::createFromFormat('d/m/Y', $this->input->post('tanggal'));
+        $new_date = $date_from->format('Y-m-d');
+        $datapermohonan = array(
+                        'nama_pemohon' => $this->input->post('nama_pemohon'),
+                        'kecamatan' => $this->input->post('kecamatan'),
+                        'desa_kel' => $this->input->post('desa_kel'),
+                        'fungsi_bangunan' => $this->input->post('fungsi_bangunan'),
+                        'jenis_kegiatan' => $this->input->post('jenis_kegiatan'),
+                        'luas_tanah' => $this->input->post('luas_tanah'),
+                        'no_register' => $this->input->post('no_register'),
+                        'tanggal' => $new_date,
+                        'ilok_ppt' => $this->input->post('ilok_ppt'),
+                        'keterangan' => $this->input->post('keterangan')
+                      );
+        $datakendali = array(
+                      'nama_pemohon' => $this->input->post('nama_pemohon'),
+                      'kecamatan' => $this->input->post('kecamatan'),
+                      'desa_kel' => $this->input->post('desa_kel'),
+                      'jenis_kegiatan' => $this->input->post('jenis_kegiatan'),
+                      'no_register' => $this->input->post('no_register'),
+                      'tanggal' => $new_date
+                      );
+
+        $this->model->insert_permo($datapermohonan);
+        $this->model->insert_kendali($datakendali);
+        $this->session->set_flashdata('insert_notification', 'Data telah disimpan ke Database');
+        redirect(base_url());
+    }else{
+      $this->load->view('pemohon_view/create_pdrt_view');
+    }
+  }
+
+  // force process input
+public function force_create() {
 
     // form validation
     $config_validate = array(
@@ -159,7 +270,7 @@ class Pdrtcrud extends CI_Controller {
         $this->session->set_flashdata('insert_notification', 'Data telah disimpan ke Database');
         redirect(base_url());
     }else{
-      $this->load->view('pemohon_view/create_pdrt_view');
+      $this->load->view('pemohon_view/force_create_view');
     }
   }
 

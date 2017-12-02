@@ -121,6 +121,16 @@ class Pdrt_model extends CI_Model {
 
   }
 
+  public function pemohon_exists($key) {
+    $this->db->where('nama_pemohon', $key);
+    $query = $this->db->get($this->table_permo);
+    if ($query->num_rows() > 0) {
+      return true;
+    } else{
+      return false;
+    }
+  }
+
 
   public function data($number,$offset) {
     return $query = $this->db->get($this->table_permo,$number,$offset)->result();
